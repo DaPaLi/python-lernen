@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Lernen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">🐍 Python Lernen</div>
+            <div class="progress-wrap">
+                <div class="progress-label">Fortschritt: <span id="progress-text">0 / 0</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+            </div>
+        </div>
+        <div class="lesson-list" id="lesson-list"></div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="lesson-header">
+            <div class="lesson-number" id="lesson-number">Lektion 1</div>
+            <div class="lesson-title" id="lesson-title">Lade...</div>
+        </div>
+
+        <div class="content">
+
+            <!-- Erklärung -->
+            <div class="card explanation-card">
+                <div class="card-label">📖 Erklärung</div>
+                <div class="explanation" id="explanation"></div>
+            </div>
+
+            <!-- Aufgabe -->
+            <div class="card task-card">
+                <div class="card-label">🎯 Aufgabe</div>
+                <div class="task-text" id="task-text"></div>
+            </div>
+
+            <!-- Editor -->
+            <div class="card editor-card">
+                <div class="card-label">💻 Dein Code</div>
+                <div id="editor-wrap">
+                    <textarea id="code-editor"></textarea>
+                </div>
+                <div class="editor-buttons">
+                    <button class="btn btn-run" onclick="runCode()">▶ Ausführen</button>
+                    <button class="btn btn-check" onclick="checkCode()">✅ Prüfen</button>
+                    <button class="btn btn-reset" onclick="resetCode()">↺ Zurücksetzen</button>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="card output-card">
+                <div class="card-label">📤 Ausgabe</div>
+                <pre class="output" id="output">Hier erscheint deine Ausgabe...</pre>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-box" id="feedback-box" style="display:none"></div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <button class="btn btn-nav" id="btn-prev" onclick="prevLesson()">← Zurück</button>
+                <button class="btn btn-nav btn-next" id="btn-next" onclick="nextLesson()">Weiter →</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="/static/app.js"></script>
+
+</body>
+</html>
